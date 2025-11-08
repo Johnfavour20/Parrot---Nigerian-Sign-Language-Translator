@@ -1,9 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import LandingPage from './components/LandingPage';
 import MainApp from './components/MainApp';
 import AuthPage from './components/AuthPage';
 import OnboardingUserType from './components/OnboardingUserType';
 import OnboardingPermissions from './components/OnboardingPermissions';
+import SplashScreen from './components/SplashScreen';
 import { Page, UserType } from './types';
 
 // Define the steps for the application flow after leaving the landing page
@@ -52,12 +53,36 @@ const AppContent: React.FC<{ onNavigate: (page: Page) => void }> = ({ onNavigate
  * and the interactive application content.
  */
 const App: React.FC = () => {
+  const [isShowingSplash, setIsShowingSplash] = useState(true);
+  const [isFadingOut, setIsFadingOut] = useState(false);
   const [currentPage, setCurrentPage] = useState<Page>(Page.Landing);
+
+  useEffect(() => {
+    // Start fading out after 1.5s
+    const fadeTimer = setTimeout(() => {
+      setIsFadingOut(true);
+    }, 1500);
+
+    // Unmount splash screen after fade out animation (500ms) completes
+    const unmountTimer = setTimeout(() => {
+      setIsShowingSplash(false);
+    }, 2000); // 1500ms + 500ms
+
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(unmountTimer);
+    };
+  }, []);
+
 
   const navigateTo = useCallback((page: Page) => {
     setCurrentPage(page);
     window.scrollTo(0, 0);
   }, []);
+
+  if (isShowingSplash) {
+    return <SplashScreen isFadingOut={isFadingOut} />;
+  }
 
   switch (currentPage) {
     case Page.App:
