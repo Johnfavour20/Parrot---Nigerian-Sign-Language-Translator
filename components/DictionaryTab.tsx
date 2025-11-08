@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { DictionaryEntry } from '../types';
 import { BookOpen, ChevronRight } from 'lucide-react';
 
@@ -6,22 +6,72 @@ const DictionaryTab: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedWord, setSelectedWord] = useState<DictionaryEntry | null>(null);
 
-  const dictionary: DictionaryEntry[] = [
-    { word: 'Hello', category: 'Greetings', video: '👋' },
-    { word: 'Thank You', category: 'Greetings', video: '🙏' },
-    { word: 'Mother', category: 'Family', video: '👩' },
-    { word: 'Father', category: 'Family', video: '👨' },
-    { word: 'Food', category: 'Daily Life', video: '🍽️' },
-    { word: 'Water', category: 'Daily Life', video: '💧' },
+  const dictionary: DictionaryEntry[] = useMemo(() => [
+    // Actions
+    { word: 'Come', category: 'Actions', video: '🫴' },
+    { word: 'Go', category: 'Actions', video: '🏃' },
+    // Animals
+    { word: 'Cat', category: 'Animals', video: '🐱' },
+    { word: 'Chicken', category: 'Animals', video: '🐔' },
+    { word: 'Dog', category: 'Animals', video: '🐶' },
+    { word: 'Goat', category: 'Animals', video: '🐐' },
+    // Common
+    { word: 'Finish', category: 'Common', video: '🏁' },
     { word: 'Help', category: 'Common', video: '🆘' },
+    { word: 'More', category: 'Common', video: '➕' },
+    { word: 'No', category: 'Common', video: '❌' },
     { word: 'Please', category: 'Common', video: '🙏' },
     { word: 'Yes', category: 'Common', video: '✅' },
-    { word: 'No', category: 'Common', video: '❌' },
-  ];
+    // Daily Life
+    { word: 'Drink', category: 'Daily Life', video: '🥤' },
+    { word: 'Eat', category: 'Daily Life', video: '😋' },
+    { word: 'Food', category: 'Daily Life', video: '🍽️' },
+    { word: 'House', category: 'Daily Life', video: '🏠' },
+    { word: 'Money', category: 'Daily Life', video: '💰' },
+    { word: 'School', category: 'Daily Life', video: '🏫' },
+    { word: 'Sleep', category: 'Daily Life', video: '😴' },
+    { word: 'Water', category: 'Daily Life', video: '💧' },
+    // Family
+    { word: 'Baby', category: 'Family', video: '👶' },
+    { word: 'Brother', category: 'Family', video: '👦' },
+    { word: 'Father', category: 'Family', video: '👨' },
+    { word: 'Mother', category: 'Family', video: '👩' },
+    { word: 'Sister', category: 'Family', video: '👧' },
+    // Feelings
+    { word: 'Happy', category: 'Feelings', video: '😄' },
+    { word: 'Love', category: 'Feelings', video: '❤️' },
+    { word: 'Sad', category: 'Feelings', video: '😢' },
+    { word: 'Sorry', category: 'Feelings', video: '😔' },
+    // Greetings
+    { word: 'Good Afternoon', category: 'Greetings', video: '☀️' },
+    { word: 'Good Morning', category: 'Greetings', video: '🌅' },
+    { word: 'Good Night', category: 'Greetings', video: '🌙' },
+    { word: 'Hello', category: 'Greetings', video: '👋' },
+    { word: 'How are you?', category: 'Greetings', video: '🤔' },
+    { word: 'My name is...', category: 'Greetings', video: '🏷️' },
+    { word: 'Thank You', category: 'Greetings', video: '🙏' },
+    // People
+    { word: 'Friend', category: 'People', video: '🤝' },
+    // Places
+    { word: 'Church', category: 'Places', video: '⛪' },
+    { word: 'Hospital', category: 'Places', video: '🏥' },
+    { word: 'Market', category: 'Places', video: '🏪' },
+    // Questions
+    { word: 'What', category: 'Questions', video: '❓' },
+    { word: 'When', category: 'Questions', video: '⏰' },
+    { word: 'Where', category: 'Questions', video: '🗺️' },
+    { word: 'Who', category: 'Questions', video: '👤' },
+    { word: 'Why', category: 'Questions', video: '🤷' },
+    // Time
+    { word: 'Today', category: 'Time', video: '🗓️' },
+    { word: 'Tomorrow', category: 'Time', video: '➡️' },
+    { word: 'Yesterday', category: 'Time', video: '⬅️' },
+  ], []);
 
-  const filteredWords = dictionary.filter(item => 
-    item.word.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredWords = useMemo(() => 
+    dictionary.filter(item => 
+      item.word.toLowerCase().includes(searchTerm.toLowerCase())
+  ), [dictionary, searchTerm]);
 
   return (
     <div className="max-w-4xl mx-auto px-4 pt-8 space-y-6">

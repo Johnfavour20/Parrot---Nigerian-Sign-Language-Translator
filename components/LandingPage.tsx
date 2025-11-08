@@ -265,15 +265,24 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       </section>
 
       <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div ref={refs.cta} className="max-w-4xl mx-auto text-center scroll-animate">
-          <div className="bg-gradient-to-br from-lime-400/10 to-transparent p-12 rounded-3xl border-2 border-lime-400/30">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Ready To Break Down <span className="block text-lime-400">Communication Barriers?</span></h2>
-            <p className="text-xl text-neutral-400 mb-8 max-w-2xl mx-auto">Experience the future of sign language translation. Start your journey towards inclusive communication today.</p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <button onClick={() => onNavigate(Page.App)} className="bg-lime-400 text-neutral-950 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-lime-300 transition-all transform hover:scale-105">
-                Try the Live Demo
-              </button>
-            </div>
+        <div ref={refs.cta} className="max-w-4xl mx-auto text-center scroll-animate relative">
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 -z-10">
+            <div className="w-full h-[400px] bg-lime-400/5 rounded-full blur-3xl"></div>
+          </div>
+          <h2 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            Ready To Break Down 
+            <span className="block text-lime-400">Communication Barriers?</span>
+          </h2>
+          <p className="text-xl text-neutral-400 mb-10 max-w-3xl mx-auto leading-relaxed">
+            Experience the future of sign language translation. Start your journey towards inclusive communication today.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <button 
+              onClick={() => onNavigate(Page.App)} 
+              className="bg-lime-400 text-neutral-950 px-10 py-5 rounded-xl font-semibold text-xl hover:bg-lime-300 transition-all transform hover:scale-105 shadow-lg shadow-lime-400/20"
+            >
+              Try the Live Demo
+            </button>
           </div>
         </div>
       </section>
