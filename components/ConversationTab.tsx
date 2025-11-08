@@ -1,22 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import { Camera, Send, Mic, RotateCcw, VideoOff, AlertTriangle } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Camera, Send, RotateCcw, VideoOff, AlertTriangle, Volume2, LoaderCircle } from 'lucide-react';
 import { useCamera } from '../hooks/useCamera';
-import { generateNslTranslation } from '../services/geminiService';
+import { generateNslTranslation, generateSpeech } from '../services/geminiService';
+import { decode, decodeAudioData } from '../utils/audio';
 
 const ConversationTab: React.FC = () => {
   const [rawGloss, setRawGloss] = useState('');
   const [refinedText, setRefinedText] = useState('');
   const [speakerInput, setSpeakerInput] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isGeneratingSpeech, setIsGeneratingSpeech] = useState(false);
+  const [translatedAudio, setTranslatedAudio] = useState<AudioBuffer | null>(null);
+
   const { videoRef, isCameraOn, error, startCamera, stopCamera, captureFrame } = useCamera();
+  const audioContextRef = useRef<AudioContext | null>(null);
 
   useEffect(() => {
+    // Initialize AudioContext on client-side
+    if (!audioContextRef.current) {
+        // Fix: Cast window to any to access webkitAudioContext for older browser compatibility.
+        audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
+    }
+
     startCamera();
     return () => {
       stopCamera();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  
+  const playAudio = (audioBuffer: AudioBuffer) => {
+    if (!audioContextRef.current || !audioBuffer) return;
+    const source = audioContextRef.current.createBufferSource();
+    source.buffer = audioBuffer;
+    source.connect(audioContextRef.current.destination);
+    source.start(0);
+  };
 
   const handleStartSigning = async () => {
     const frame = captureFrame();
@@ -27,16 +46,41 @@ const ConversationTab: React.FC = () => {
     setIsProcessing(true);
     setRawGloss('');
     setRefinedText('');
+    setTranslatedAudio(null);
+    
     const result = await generateNslTranslation(frame);
     setRawGloss(result.rawGloss);
     setRefinedText(result.refinedText);
     setIsProcessing(false);
+
+    if (result.refinedText && audioContextRef.current) {
+      setIsGeneratingSpeech(true);
+      const base64Audio = await generateSpeech(result.refinedText);
+      if (base64Audio) {
+        const audioData = decode(base64Audio);
+        const buffer = await decodeAudioData(audioData, audioContextRef.current, 24000, 1);
+        setTranslatedAudio(buffer);
+        playAudio(buffer);
+      }
+      setIsGeneratingSpeech(false);
+    }
+  };
+
+  const handleSpeakResponse = async () => {
+    if (!speakerInput.trim() || !audioContextRef.current) return;
+    const base64Audio = await generateSpeech(speakerInput);
+    if (base64Audio) {
+      const audioData = decode(base64Audio);
+      const buffer = await decodeAudioData(audioData, audioContextRef.current, 24000, 1);
+      playAudio(buffer);
+    }
   };
   
   const handleReset = () => {
     setRawGloss('');
     setRefinedText('');
     setSpeakerInput('');
+    setTranslatedAudio(null);
     if(!isCameraOn) startCamera();
   }
 
@@ -90,7 +134,15 @@ const ConversationTab: React.FC = () => {
       <div className="bg-gradient-to-br from-lime-400/10 to-transparent rounded-xl border-2 border-lime-400/30 p-6">
         <div className="flex items-center justify-between mb-3">
           <label className="text-sm font-semibold text-lime-400">AI-REFINED TRANSLATION</label>
-          <span className="text-xs bg-lime-400 text-neutral-950 px-2 py-1 rounded font-semibold">Enhanced</span>
+          {isGeneratingSpeech ? (
+              <LoaderCircle className="w-5 h-5 text-lime-400 animate-spin" />
+            ) : (
+              translatedAudio && (
+                <button onClick={() => playAudio(translatedAudio)} className="text-lime-400 hover:text-lime-300">
+                  <Volume2 className="w-5 h-5" />
+                </button>
+              )
+            )}
         </div>
         <div className="min-h-[60px] text-xl break-words">
           {refinedText || 'Natural language translation will appear here...'}
@@ -107,8 +159,8 @@ const ConversationTab: React.FC = () => {
             placeholder="Type your response here..."
             className="flex-1 bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 focus:outline-none focus:border-lime-400 transition-colors"
           />
-          <button className="bg-lime-400 text-neutral-950 p-3 rounded-lg hover:bg-lime-300 transition-all">
-            <Mic className="w-5 h-5" />
+          <button onClick={handleSpeakResponse} className="bg-lime-400 text-neutral-950 p-3 rounded-lg hover:bg-lime-300 transition-all disabled:opacity-50" disabled={!speakerInput.trim()}>
+            <Volume2 className="w-5 h-5" />
           </button>
           <button className="bg-lime-400 text-neutral-950 p-3 rounded-lg hover:bg-lime-300 transition-all">
             <Send className="w-5 h-5" />
