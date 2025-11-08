@@ -1,0 +1,7 @@
+{
+  "name": "Parrot - Nigerian Sign Language Translator",
+  "description": "A real-time Nigerian Sign Language (NSL) translator powered by AI. Bridge communication gaps with fast, accurate, and localized sign language interpretation.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
