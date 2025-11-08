@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Camera, AlertTriangle } from 'lucide-react';
-import { useCamera } from '../hooks/useCamera';
+import { useCamera } from '../useCamera';
 
 interface OnboardingPermissionsProps {
   onGranted: () => void;

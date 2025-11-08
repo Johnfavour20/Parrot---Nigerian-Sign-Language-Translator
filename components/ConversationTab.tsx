@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Camera, Send, RotateCcw, VideoOff, AlertTriangle, Volume2, LoaderCircle } from 'lucide-react';
-import { useCamera } from '../hooks/useCamera';
+import { useCamera } from '../useCamera';
 import { generateNslTranslation, generateSpeech } from '../services/geminiService';
 import { decode, decodeAudioData } from '../utils/audio';
 

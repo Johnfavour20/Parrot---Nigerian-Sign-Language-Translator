@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Zap, AlertTriangle } from 'lucide-react';
-import { useCamera } from '../hooks/useCamera';
+import { useCamera } from '../useCamera';
 import { quickNslDetection } from '../services/geminiService';
 
 interface DetectedSign {

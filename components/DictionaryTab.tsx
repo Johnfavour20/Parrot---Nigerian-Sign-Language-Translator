@@ -3,7 +3,7 @@ import { DictionaryEntry } from '../types';
 import { BookOpen, ChevronRight, Volume2, LoaderCircle, AlertTriangle, CheckCircle, XCircle, ChevronLeft, Video } from 'lucide-react';
 import { generateSpeech, quickNslDetection } from '../services/geminiService';
 import { decode, decodeAudioData } from '../utils/audio';
-import { useCamera } from '../hooks/useCamera';
+import { useCamera } from '../useCamera';
 
 type PracticeResult = {
   message: string;
