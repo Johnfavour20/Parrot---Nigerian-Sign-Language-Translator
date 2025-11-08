@@ -38,7 +38,7 @@ const QuickTranslateTab: React.FC = () => {
     return (
         <div className="max-w-4xl mx-auto px-4 pt-8 space-y-6">
             <div className="text-center space-y-2">
-                <h1 className="text-3xl font-bold">Quick Translate</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold">Quick Translate</h1>
                 <p className="text-neutral-400">Single sign recognition</p>
             </div>
 
@@ -71,10 +71,10 @@ const QuickTranslateTab: React.FC = () => {
                         </div>
                     )}
                     {detectedSign && (
-                        <div className="text-center space-y-6 p-8 bg-black/60 rounded-2xl backdrop-blur-md">
-                            <div className="text-7xl animate-bounce-slow">✋</div>
-                            <div className="text-6xl font-bold text-lime-400">{detectedSign.word}</div>
-                            <div className="text-2xl text-neutral-400">
+                        <div className="text-center space-y-4 sm:space-y-6 p-8 bg-black/60 rounded-2xl backdrop-blur-md">
+                            <div className="text-6xl sm:text-7xl animate-bounce-slow">✋</div>
+                            <div className="text-5xl sm:text-6xl font-bold text-lime-400 break-words">{detectedSign.word}</div>
+                            <div className="text-lg sm:text-2xl text-neutral-400">
                                 Confidence: <span className="text-lime-400 font-bold">{detectedSign.confidence}%</span>
                             </div>
                         </div>

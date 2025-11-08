@@ -115,8 +115,8 @@ const DictionaryTab: React.FC = () => {
           <span>Back to Dictionary</span>
         </button>
         <div className="text-center">
-            <h1 className="text-3xl font-bold">Practice Signing</h1>
-            <p className="text-5xl font-bold text-lime-400 mt-2">{practiceWord.word}</p>
+            <h1 className="text-2xl sm:text-3xl font-bold">Practice Signing</h1>
+            <p className="text-4xl sm:text-5xl font-bold text-lime-400 mt-2">{practiceWord.word}</p>
         </div>
         <div className="relative bg-neutral-900 rounded-2xl border-2 border-neutral-800 overflow-hidden aspect-video">
             <video ref={videoRef} className={`w-full h-full object-cover ${!isCameraOn && 'hidden'}`} playsInline muted />
@@ -131,12 +131,12 @@ const DictionaryTab: React.FC = () => {
                 )}
                  {practiceResult && (
                     <div className="absolute inset-0 bg-black/80 backdrop-blur-sm flex flex-col justify-center items-center text-center p-6 space-y-6 z-20">
-                        {practiceResult.success ? <CheckCircle className="w-20 h-20 text-lime-400" /> : <XCircle className="w-20 h-20 text-red-400" />}
-                        <p className="text-3xl font-bold">{practiceResult.message}</p>
+                        {practiceResult.success ? <CheckCircle className="w-16 h-16 sm:w-20 sm:h-20 text-lime-400" /> : <XCircle className="w-16 h-16 sm:w-20 sm:h-20 text-red-400" />}
+                        <p className="text-2xl sm:text-3xl font-bold">{practiceResult.message}</p>
                         {practiceResult.detectedWord && <p className="text-neutral-300 text-lg">I detected: <span className="font-bold text-lime-400">{practiceResult.detectedWord}</span></p>}
-                        <div className="flex gap-4 mt-4">
-                            <button onClick={() => setPracticeResult(null)} className="bg-lime-400 text-neutral-950 px-8 py-3 rounded-lg font-semibold hover:bg-lime-300 transition-all">Try Again</button>
-                            <button onClick={handleExitPractice} className="bg-neutral-700 text-neutral-100 px-8 py-3 rounded-lg font-semibold hover:bg-neutral-600 transition-all">Finish</button>
+                        <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full max-w-xs">
+                            <button onClick={() => setPracticeResult(null)} className="w-full bg-lime-400 text-neutral-950 px-8 py-3 rounded-lg font-semibold hover:bg-lime-300 transition-all">Try Again</button>
+                            <button onClick={handleExitPractice} className="w-full bg-neutral-700 text-neutral-100 px-8 py-3 rounded-lg font-semibold hover:bg-neutral-600 transition-all">Finish</button>
                         </div>
                     </div>
                 )}
@@ -156,7 +156,7 @@ const DictionaryTab: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 pt-8 space-y-6">
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold">NSL Dictionary</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold">NSL Dictionary</h1>
         <p className="text-neutral-400">Learn Nigerian Sign Language signs</p>
       </div>
 
@@ -171,10 +171,10 @@ const DictionaryTab: React.FC = () => {
             <ChevronRight className="w-4 h-4 rotate-180" /><span>Back to list</span>
           </button>
           <div className="text-center space-y-6">
-            <div className="text-8xl">{selectedWord.video}</div>
+            <div className="text-7xl sm:text-8xl">{selectedWord.video}</div>
             <div>
               <div className="flex items-center justify-center gap-3">
-                <h2 className="text-3xl font-bold text-lime-400">{selectedWord.word}</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold text-lime-400">{selectedWord.word}</h2>
                 {isFetchingAudio ? (<LoaderCircle className="w-6 h-6 text-lime-400 animate-spin" />) : (
                   selectedWordAudio && (<button onClick={() => playAudio(selectedWordAudio)} className="text-lime-400 hover:text-lime-300"><Volume2 className="w-6 h-6" /></button>)
                 )}
@@ -190,8 +190,8 @@ const DictionaryTab: React.FC = () => {
       {!selectedWord && (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {filteredWords.map((item, index) => (
-            <button key={index} onClick={() => setSelectedWord(item)} className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 hover:border-lime-400/50 transition-all hover:scale-105 text-center space-y-3">
-              <div className="text-5xl">{item.video}</div>
+            <button key={index} onClick={() => setSelectedWord(item)} className="bg-neutral-900 border border-neutral-800 rounded-xl p-4 sm:p-6 hover:border-lime-400/50 transition-all hover:scale-105 text-center space-y-3">
+              <div className="text-4xl sm:text-5xl">{item.video}</div>
               <div><p className="font-semibold text-neutral-100">{item.word}</p><p className="text-xs text-neutral-400">{item.category}</p></div>
             </button>
           ))}

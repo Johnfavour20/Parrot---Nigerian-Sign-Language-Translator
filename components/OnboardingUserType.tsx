@@ -10,11 +10,11 @@ const OnboardingUserType: React.FC<OnboardingUserTypeProps> = ({ onSelect }) => 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col justify-center items-center p-4">
       <div className="w-full max-w-2xl text-center space-y-6">
-        <h1 className="text-4xl font-bold">How will you be using Parrot?</h1>
-        <p className="text-xl text-neutral-400">This will help us personalize your experience.</p>
+        <h1 className="text-3xl sm:text-4xl font-bold">How will you be using Parrot?</h1>
+        <p className="text-lg sm:text-xl text-neutral-400">This will help us personalize your experience.</p>
       </div>
 
-      <div className="mt-12 grid md:grid-cols-2 gap-8 w-full max-w-4xl">
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
         <button
           onClick={() => onSelect('signer')}
           className="group p-8 bg-neutral-900 rounded-2xl border-2 border-neutral-800 hover:border-lime-400 transition-all hover:transform hover:-translate-y-2 text-center space-y-4"

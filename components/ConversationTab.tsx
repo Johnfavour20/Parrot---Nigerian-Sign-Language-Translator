@@ -87,7 +87,7 @@ const ConversationTab: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 pt-8 space-y-6">
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold">Conversation Mode</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold">Conversation Mode</h1>
         <p className="text-neutral-400">Real-time sign language translation</p>
       </div>
 
@@ -121,17 +121,17 @@ const ConversationTab: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-neutral-900 rounded-xl border border-neutral-800 p-6">
+      <div className="bg-neutral-900 rounded-xl border border-neutral-800 p-4 sm:p-6">
         <div className="flex items-center justify-between mb-3">
           <label className="text-sm font-semibold text-neutral-400">RAW SIGN GLOSS</label>
           <span className="text-xs bg-lime-400/20 text-lime-400 px-2 py-1 rounded">Real-time</span>
         </div>
-        <div className="min-h-[60px] text-xl font-mono text-lime-400 break-words">
+        <div className="min-h-[60px] text-lg sm:text-xl font-mono text-lime-400 break-words">
           {rawGloss || 'Signs will appear here...'}
         </div>
       </div>
 
-      <div className="bg-gradient-to-br from-lime-400/10 to-transparent rounded-xl border-2 border-lime-400/30 p-6">
+      <div className="bg-gradient-to-br from-lime-400/10 to-transparent rounded-xl border-2 border-lime-400/30 p-4 sm:p-6">
         <div className="flex items-center justify-between mb-3">
           <label className="text-sm font-semibold text-lime-400">AI-REFINED TRANSLATION</label>
           {isGeneratingSpeech ? (
@@ -144,7 +144,7 @@ const ConversationTab: React.FC = () => {
               )
             )}
         </div>
-        <div className="min-h-[60px] text-xl break-words">
+        <div className="min-h-[60px] text-lg sm:text-xl break-words">
           {refinedText || 'Natural language translation will appear here...'}
         </div>
       </div>

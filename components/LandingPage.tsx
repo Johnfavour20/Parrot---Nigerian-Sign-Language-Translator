@@ -127,32 +127,32 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-lime-400/5 to-transparent"></div>
         <div className="max-w-7xl mx-auto relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+            <div className="space-y-8 text-center lg:text-left">
               <div className="inline-block animate-slide-up" style={{ animationDelay: '100ms' }}>
                 <span className="bg-lime-400/10 text-lime-400 px-4 py-2 rounded-full text-sm font-semibold border border-lime-400/20">Breaking Communication Barriers</span>
               </div>
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight animate-slide-up" style={{ animationDelay: '200ms' }}>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight animate-slide-up" style={{ animationDelay: '200ms' }}>
                 Bridge The Gap With
                 <span className="block text-lime-400 mt-2">Nigerian Sign Language</span>
               </h1>
-              <p className="text-xl text-neutral-400 leading-relaxed animate-slide-up" style={{ animationDelay: '300ms' }}>
+              <p className="text-lg sm:text-xl text-neutral-400 leading-relaxed animate-slide-up" style={{ animationDelay: '300ms' }}>
                 Real-time translation powered by advanced AI. Connect the Nigerian Deaf community with fast, accurate, and localized sign language interpretation.
               </p>
-              <div className="flex flex-wrap gap-4 items-center animate-slide-up" style={{ animationDelay: '400ms' }}>
+              <div className="flex flex-wrap gap-4 items-center animate-slide-up justify-center lg:justify-start" style={{ animationDelay: '400ms' }}>
                 <button onClick={() => onNavigate(Page.App)} className="bg-lime-400 text-neutral-950 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-lime-300 transition-all transform hover:scale-105 flex items-center space-x-2">
                   <span>Try Demo</span>
                   <Play className="w-5 h-5" />
                 </button>
-                <span className="text-neutral-500 text-sm">No signup required.</span>
+                <span className="text-neutral-500 text-sm w-full lg:w-auto">No signup required.</span>
               </div>
             </div>
             <div className="relative animate-slide-up" style={{ animationDelay: '300ms' }}>
               <div className="absolute inset-0 bg-lime-400 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-              <div className="relative bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-2xl p-8 border border-neutral-700 shadow-2xl">
+              <div className="relative bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-2xl p-6 sm:p-8 border border-neutral-700 shadow-2xl">
                 <div className="aspect-square bg-lime-400/10 rounded-xl flex items-center justify-center border-2 border-lime-400/30">
                   <div className="text-center space-y-4">
-                    <div className="w-24 h-24 mx-auto bg-lime-400 rounded-full flex items-center justify-center animate-bounce-slow"><span className="text-5xl">👋</span></div>
-                    <p className="text-xl font-semibold text-lime-400">Real-Time Detection</p>
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto bg-lime-400 rounded-full flex items-center justify-center animate-bounce-slow"><span className="text-4xl sm:text-5xl">👋</span></div>
+                    <p className="text-lg sm:text-xl font-semibold text-lime-400">Real-Time Detection</p>
                     <p className="text-neutral-400">Camera feed processes signs instantly</p>
                   </div>
                 </div>
@@ -164,11 +164,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-neutral-900/50">
         <div className="max-w-7xl mx-auto">
-          <div ref={refs.stats} className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div ref={refs.stats} className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center space-y-2 p-6 rounded-xl bg-neutral-900/50 border border-neutral-800 hover:border-lime-400/50 transition-all scroll-animate" style={{ transitionDelay: `${index * 100}ms`}}>
-                <div className="text-3xl lg:text-4xl font-bold text-lime-400">{stat.value}</div>
-                <div className="text-neutral-400">{stat.label}</div>
+              <div key={index} className="text-center space-y-2 p-4 sm:p-6 rounded-xl bg-neutral-900/50 border border-neutral-800 hover:border-lime-400/50 transition-all scroll-animate" style={{ transitionDelay: `${index * 100}ms`}}>
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-lime-400">{stat.value}</div>
+                <div className="text-sm sm:text-base text-neutral-400">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -178,20 +178,20 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       <section ref={refs.howItWorks} className="py-20 px-4 sm:px-6 lg:px-8 scroll-animate">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl lg:text-5xl font-bold">Simple Steps to <span className="text-lime-400">Instant Translation</span></h2>
-            <p className="text-xl text-neutral-400 max-w-2xl mx-auto">Our technology makes communication effortless. See how it works in three easy steps.</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Simple Steps to <span className="text-lime-400">Instant Translation</span></h2>
+            <p className="text-lg sm:text-xl text-neutral-400 max-w-2xl mx-auto">Our technology makes communication effortless. See how it works in three easy steps.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 text-center relative">
               <div className="absolute top-1/2 left-0 w-full h-px bg-neutral-800 hidden md:block"></div>
               <div className="absolute top-1/4 md:top-1/2 left-1/2 md:left-0 w-px md:w-full h-full md:h-px bg-neutral-800"></div>
               {[
-                  { icon: <Camera className="w-10 h-10" />, title: 'Start Your Camera', desc: 'Securely open your camera feed within the app.' },
-                  { icon: <CloudCog className="w-10 h-10" />, title: 'AI Processes Sign', desc: 'Our model analyzes the sign in real-time.' },
-                  { icon: <MessageSquareText className="w-10 h-10" />, title: 'Get Instant Text', desc: 'Receive an accurate text translation instantly.' }
+                  { icon: <Camera className="w-8 h-8 sm:w-10 sm:h-10" />, title: 'Start Your Camera', desc: 'Securely open your camera feed within the app.' },
+                  { icon: <CloudCog className="w-8 h-8 sm:w-10 sm:h-10" />, title: 'AI Processes Sign', desc: 'Our model analyzes the sign in real-time.' },
+                  { icon: <MessageSquareText className="w-8 h-8 sm:w-10 sm:h-10" />, title: 'Get Instant Text', desc: 'Receive an accurate text translation instantly.' }
               ].map((step, index) => (
-                  <div key={index} className="relative z-10 space-y-4 p-8 bg-neutral-950">
-                      <div className="w-20 h-20 mx-auto flex items-center justify-center rounded-full bg-neutral-900 border-2 border-lime-400/30 text-lime-400 mb-4">{step.icon}</div>
-                      <h3 className="text-xl font-semibold">{step.title}</h3>
+                  <div key={index} className="relative z-10 space-y-4 p-6 sm:p-8 bg-neutral-950">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto flex items-center justify-center rounded-full bg-neutral-900 border-2 border-lime-400/30 text-lime-400 mb-4">{step.icon}</div>
+                      <h3 className="text-lg sm:text-xl font-semibold">{step.title}</h3>
                       <p className="text-neutral-400">{step.desc}</p>
                   </div>
               ))}
@@ -202,14 +202,14 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       <section id="features" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div ref={refs.featuresTitle} className="text-center mb-16 space-y-4 scroll-animate">
-            <h2 className="text-4xl lg:text-5xl font-bold">Powerful Features For <span className="block text-lime-400">Seamless Communication</span></h2>
-            <p className="text-xl text-neutral-400 max-w-2xl mx-auto">Built with cutting-edge technology to provide the fastest and most accurate NSL translation experience.</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Powerful Features For <span className="block text-lime-400">Seamless Communication</span></h2>
+            <p className="text-lg sm:text-xl text-neutral-400 max-w-2xl mx-auto">Built with cutting-edge technology to provide the fastest and most accurate NSL translation experience.</p>
           </div>
-          <div ref={refs.featuresGrid} className="grid md:grid-cols-2 gap-8">
+          <div ref={refs.featuresGrid} className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="group p-8 bg-neutral-900 rounded-2xl border border-neutral-800 hover:border-lime-400/50 transition-all hover:transform hover:-translate-y-2 scroll-animate" style={{ transitionDelay: `${index * 100}ms` }}>
-                <div className="w-16 h-16 text-lime-400 mb-6 group-hover:scale-110 transition-transform">{feature.icon}</div>
-                <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
+              <div key={index} className="group p-6 sm:p-8 bg-neutral-900 rounded-2xl border border-neutral-800 hover:border-lime-400/50 transition-all hover:transform hover:-translate-y-2 scroll-animate" style={{ transitionDelay: `${index * 100}ms` }}>
+                <div className="w-12 h-12 sm:w-16 sm:h-16 text-lime-400 mb-6 group-hover:scale-110 transition-transform">{feature.icon}</div>
+                <h3 className="text-xl sm:text-2xl font-bold mb-4">{feature.title}</h3>
                 <p className="text-neutral-400 leading-relaxed mb-4">{feature.description}</p>
                  <span className="text-lime-400 font-semibold flex items-center space-x-2"><span>Powered by Gemini</span></span>
               </div>
@@ -221,10 +221,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       <section ref={refs.whoItsFor} className="py-20 px-4 sm:px-6 lg:px-8 bg-neutral-900/50 scroll-animate">
         <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 space-y-4">
-                <h2 className="text-4xl lg:text-5xl font-bold">Designed For <span className="text-lime-400">Everyone</span></h2>
-                <p className="text-xl text-neutral-400 max-w-2xl mx-auto">Parrot is a versatile tool for building bridges and fostering inclusion across communities.</p>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Designed For <span className="text-lime-400">Everyone</span></h2>
+                <p className="text-lg sm:text-xl text-neutral-400 max-w-2xl mx-auto">Parrot is a versatile tool for building bridges and fostering inclusion across communities.</p>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
                     { icon: <Users className="w-8 h-8"/>, title: "Deaf Community", desc: "Communicate effortlessly in public spaces, appointments, and with non-signers." },
                     { icon: <GraduationCap className="w-8 h-8"/>, title: "Students & Learners", desc: "An interactive tool to practice signing and get instant feedback to accelerate learning." },
@@ -243,8 +243,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       <section id="faq" ref={refs.faq} className="py-20 px-4 sm:px-6 lg:px-8 scroll-animate">
           <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12 space-y-4">
-                  <h2 className="text-4xl lg:text-5xl font-bold">Frequently Asked <span className="text-lime-400">Questions</span></h2>
-                  <p className="text-xl text-neutral-400 max-w-2xl mx-auto">Have questions? We've got answers. If you need more help, feel free to reach out.</p>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Frequently Asked <span className="text-lime-400">Questions</span></h2>
+                  <p className="text-lg sm:text-xl text-neutral-400 max-w-2xl mx-auto">Have questions? We've got answers. If you need more help, feel free to reach out.</p>
               </div>
               <div className="space-y-4">
                   {faqs.map((faq, index) => (
@@ -269,17 +269,17 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
           <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 -z-10">
             <div className="w-full h-[400px] bg-lime-400/5 rounded-full blur-3xl"></div>
           </div>
-          <h2 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Ready To Break Down 
             <span className="block text-lime-400">Communication Barriers?</span>
           </h2>
-          <p className="text-xl text-neutral-400 mb-10 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-neutral-400 mb-10 max-w-3xl mx-auto leading-relaxed">
             Experience the future of sign language translation. Start your journey towards inclusive communication today.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <button 
               onClick={() => onNavigate(Page.App)} 
-              className="bg-lime-400 text-neutral-950 px-10 py-5 rounded-xl font-semibold text-xl hover:bg-lime-300 transition-all transform hover:scale-105 shadow-lg shadow-lime-400/20"
+              className="bg-lime-400 text-neutral-950 px-8 py-4 text-lg sm:px-10 sm:py-5 sm:text-xl rounded-xl font-semibold hover:bg-lime-300 transition-all transform hover:scale-105 shadow-lg shadow-lime-400/20"
             >
               Try the Live Demo
             </button>

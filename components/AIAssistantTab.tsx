@@ -19,7 +19,7 @@ const AIAssistantTab: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 pt-8 space-y-6">
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold">AI Assistant</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold">AI Assistant</h1>
         <p className="text-neutral-400">Ask anything about Nigerian Sign Language</p>
       </div>
 
@@ -59,11 +59,11 @@ const AIAssistantTab: React.FC = () => {
             <span className="font-semibold text-lime-400">AI Response</span>
           </div>
           {loading && !response && <p className="text-neutral-400 animate-pulse">AI is generating a response...</p>}
-          <p className="text-neutral-100 leading-relaxed whitespace-pre-wrap">{response}</p>
+          <div className="text-neutral-100 leading-relaxed whitespace-pre-wrap prose prose-invert prose-sm sm:prose-base">{response}</div>
         </div>
       )}
 
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <button 
           onClick={() => setQuery('What are the basic greetings in NSL?')}
           className="bg-neutral-900 border border-neutral-800 rounded-lg p-4 text-left hover:border-lime-400/50 transition-all"

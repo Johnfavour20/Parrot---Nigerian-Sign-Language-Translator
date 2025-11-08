@@ -54,7 +54,7 @@ const AuthPage: React.FC<AuthPageProps> = ({ onAuthSuccess, onNavigateHome }) =>
                 </button>
             </div>
         
-            <div className="bg-neutral-900/50 backdrop-blur-sm border border-neutral-800 rounded-2xl p-8 space-y-6">
+            <div className="bg-neutral-900/50 backdrop-blur-sm border border-neutral-800 rounded-2xl p-6 sm:p-8 space-y-6">
                 <div>
                     <h1 className="text-2xl font-bold">{isLogin ? 'Welcome Back' : 'Create an Account'}</h1>
                     <p className="text-neutral-400 text-sm mt-1">{isLogin ? 'Sign in to continue your journey.' : 'Get started with real-time translation.'}</p>

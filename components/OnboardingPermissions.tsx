@@ -20,10 +20,10 @@ const OnboardingPermissions: React.FC<OnboardingPermissionsProps> = ({ onGranted
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col justify-center items-center p-4">
-      <div className="w-full max-w-lg text-center bg-neutral-900 border border-neutral-800 rounded-2xl p-10 space-y-8">
+      <div className="w-full max-w-lg text-center bg-neutral-900 border border-neutral-800 rounded-2xl p-6 sm:p-10 space-y-8">
         <Camera className="w-20 h-20 mx-auto text-lime-400" />
         <div className="space-y-3">
-          <h1 className="text-3xl font-bold">Camera Access Required</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold">Camera Access Required</h1>
           <p className="text-neutral-400">Parrot needs access to your camera to translate Nigerian Sign Language in real-time. Your camera is only used for translation and your video is never stored.</p>
         </div>
 
