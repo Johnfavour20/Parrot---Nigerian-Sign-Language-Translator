@@ -3,6 +3,8 @@ export enum Page {
   App = 'app',
 }
 
+export type UserType = 'signer' | 'learner';
+
 export interface DictionaryEntry {
   word: string;
   category: string;

@@ -9,10 +9,11 @@ import { MessageSquare, Zap, Brain, BookOpen } from 'lucide-react';
 
 interface MainAppProps {
   onNavigate: (page: Page) => void;
+  initialTab: 'conversation' | 'dictionary';
 }
 
-const MainApp: React.FC<MainAppProps> = ({ onNavigate }) => {
-  const [activeTab, setActiveTab] = useState('conversation');
+const MainApp: React.FC<MainAppProps> = ({ onNavigate, initialTab }) => {
+  const [activeTab, setActiveTab] = useState(initialTab);
 
   const renderTabContent = () => {
     switch(activeTab) {
