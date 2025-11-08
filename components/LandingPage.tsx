@@ -103,6 +103,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
+              <a href="#how-it-works" className="text-neutral-300 hover:text-lime-400 transition-colors">How It Works</a>
               <a href="#features" className="text-neutral-300 hover:text-lime-400 transition-colors">Features</a>
               <a href="#faq" className="text-neutral-300 hover:text-lime-400 transition-colors">FAQ</a>
               <button onClick={() => onNavigate(Page.App)} className="bg-lime-400 text-neutral-950 px-6 py-2.5 rounded-lg font-semibold hover:bg-lime-300 transition-all transform hover:scale-105">
@@ -115,6 +116,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
         {isMenuOpen && (
           <div className="md:hidden bg-neutral-900 border-t border-neutral-800">
             <div className="px-4 py-4 space-y-3">
+              <a href="#how-it-works" className="block text-neutral-300 hover:text-lime-400 py-2">How It Works</a>
               <a href="#features" className="block text-neutral-300 hover:text-lime-400 py-2">Features</a>
               <a href="#faq" className="block text-neutral-300 hover:text-lime-400 py-2">FAQ</a>
               <button onClick={() => onNavigate(Page.App)} className="w-full bg-lime-400 text-neutral-950 px-6 py-2.5 rounded-lg font-semibold">Get Started</button>
@@ -175,7 +177,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
         </div>
       </section>
       
-      <section ref={refs.howItWorks} className="py-20 px-4 sm:px-6 lg:px-8 scroll-animate">
+      <section id="how-it-works" ref={refs.howItWorks} className="py-20 px-4 sm:px-6 lg:px-8 scroll-animate">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Simple Steps to <span className="text-lime-400">Instant Translation</span></h2>

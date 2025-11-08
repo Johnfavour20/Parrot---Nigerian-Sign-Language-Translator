@@ -12,8 +12,13 @@ interface MainAppProps {
   initialTab: 'conversation' | 'dictionary';
 }
 
+// Fix: Define a type for all possible tabs to resolve type errors.
+type Tab = 'conversation' | 'quick' | 'assistant' | 'dictionary';
+
 const MainApp: React.FC<MainAppProps> = ({ onNavigate, initialTab }) => {
-  const [activeTab, setActiveTab] = useState(initialTab);
+  // Fix: Explicitly type the state with `Tab`. The type was previously inferred
+  // too narrowly from `initialTab`, causing comparison and assignment errors for other tabs.
+  const [activeTab, setActiveTab] = useState<Tab>(initialTab);
 
   const renderTabContent = () => {
     switch(activeTab) {
