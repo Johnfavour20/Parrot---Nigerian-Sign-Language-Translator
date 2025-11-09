@@ -106,7 +106,7 @@ To run this project locally, follow these steps:
     - Create a file named `.env` in the root of the project.
     - Add your API key to this file:
       ```
-      VITE_GEMINI_API_KEY=YOUR_API_KEY_HERE
+      GEMINI_API_KEY=YOUR_API_KEY_HERE
       ```
     > **Note**: This assumes you are running in a Vite environment. In the provided `aistudio` context, `process.env.API_KEY` is automatically injected, so a `.env` file is not needed for that specific platform.
 
