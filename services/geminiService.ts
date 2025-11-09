@@ -1,6 +1,6 @@
 import { GoogleGenAI, Type, Modality } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY as string });
 
 export const generateNslTranslation = async (base64ImageData: string): Promise<{ rawGloss: string; refinedText: string; }> => {
   try {
