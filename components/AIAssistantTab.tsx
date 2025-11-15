@@ -7,16 +7,21 @@ const AIAssistantTab: React.FC = () => {
   const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleAsk = async (question: string) => {
-    // Prevent new requests while one is in progress or if the question is empty
+  // Core function to submit a question and get a response
+  const handleSubmit = async (question: string) => {
     if (loading || !question.trim()) return;
 
-    setQuery(question); // Update text area to show the current question
     setLoading(true);
     setResponse('');
     const aiResponse = await askNslAssistant(question);
     setResponse(aiResponse);
     setLoading(false);
+  };
+
+  // Handler for quick question buttons to make them a one-click action
+  const handleQuickQuestion = (question: string) => {
+    setQuery(question); // 1. Update the text area with the question
+    handleSubmit(question); // 2. Immediately submit that question
   };
 
   return (
@@ -35,7 +40,7 @@ const AIAssistantTab: React.FC = () => {
           className="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 h-32 resize-none focus:outline-none focus:border-lime-400 transition-colors"
         />
         <button 
-          onClick={() => handleAsk(query)}
+          onClick={() => handleSubmit(query)}
           disabled={loading || !query.trim()}
           className="w-full bg-lime-400 text-neutral-950 py-3 rounded-lg font-semibold hover:bg-lime-300 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
         >
@@ -68,7 +73,7 @@ const AIAssistantTab: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <button 
-          onClick={() => handleAsk('What are the basic greetings in NSL?')}
+          onClick={() => handleQuickQuestion('What are the basic greetings in NSL?')}
           disabled={loading}
           className="bg-neutral-900 border border-neutral-800 rounded-lg p-4 text-left hover:border-lime-400/50 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
         >
@@ -76,7 +81,7 @@ const AIAssistantTab: React.FC = () => {
           <p className="text-neutral-300">What are the basic greetings in NSL?</p>
         </button>
         <button 
-          onClick={() => handleAsk('How do I sign numbers in Nigerian Sign Language?')}
+          onClick={() => handleQuickQuestion('How do I sign numbers in Nigerian Sign Language?')}
           disabled={loading}
           className="bg-neutral-900 border border-neutral-800 rounded-lg p-4 text-left hover:border-lime-400/50 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
         >
